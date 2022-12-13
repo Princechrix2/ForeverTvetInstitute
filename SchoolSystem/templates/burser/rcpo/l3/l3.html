@@ -1,0 +1,296 @@
+{% extends 'burser/index.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="card p-1">
+                    <div class="card-body">
+                      <div style="align-items: baseline;" class="title d-flex mb-2">
+          
+                        <h5 class="me-2 hm-titlee">Road Construction and Plant Operation /</h5><span><a href="" class="text-primary hm-title navbar-brand">Level 3</a></span>
+                        <!-- Add Student -->
+                        <a href="{% url 'burser_rcpo_l3_students' %}" class="btn btn-sm btn-outline-success">
+                          <i class="fa fa-plus" aria-hidden="true"></i>
+                        </a>
+        
+                        <div class="left-title ms-auto d-flex">
+                          <!-- Download to Excel -->
+                          <button class="btn btn-sm btn-outline-success me-2" onclick="ExportToExcel('xlsx');">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                          </button>
+
+                          <!-- Print the Table -->
+                          <button class="btn btn-sm btn-outline-success me-2" onclick="print();">
+                            <i class="fa fa-print" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+        
+                      <table class="table table-bordered table-striped  p-2 mt-2" id="myTable">
+                        <thead>
+                          <tr>
+                            <th>No.</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Trade</th>
+                            <th>Phone</th>
+                            <th>1<sup>st</sup> Term</th>
+                            <th>2<sup>nd</sup> Term</th>
+                            <th>3<sup>rd</sup> Term</th>
+                            <th>Operation</th>
+                          </tr>
+                        </thead>
+                        <tbody >
+                          {% if students %}
+                            {% for student in students %}
+                              <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{student.first_name|upper}}</td>
+                                <td>{{student.last_name|capfirst}}</td>
+                                <td>{{student.trade}}</td>
+                                <td>{{student.father_tel}}</td>
+                                {% if student.status == 'Boarding' %}
+                                  {% for fee in Fixed_Fee %}
+
+                                    {% if fee.first_fixed_fee == student.first_term_fee %}
+                                      <td id="first" style="background-color: rgb(114, 237, 198); border-radius: 12px;"><strong id="first_term_fee">{{student.first_term_fee}}</strong> Frw</td>
+                                    {% else %}
+                                      <td id="first" style="background-color: rgb(221, 157, 134); border-radius: 12px;"><strong id="first_term_fee">{{student.first_term_fee}}</strong> Frw</td>
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% for fee in Fixed_Fee %}
+
+                                    {% if fee.second_fixed_fee == student.second_term_fee %}
+                                      <td id="first" style="background-color: rgb(114, 237, 198); border-radius: 12px;"><strong id="first_term_fee">{{student.second_term_fee}}</strong> Frw</td>
+                                    {% else %}
+                                      <td id="first" style="background-color: rgb(221, 157, 134); border-radius: 12px;"><strong id="first_term_fee">{{student.second_term_fee}}</strong> Frw</td>
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% for fee in Fixed_Fee %}
+
+                                    {% if fee.third_fixed_fee == student.third_term_fee %}
+                                      <td id="first" style="background-color: rgb(114, 237, 198); border-radius: 12px;"><strong id="first_term_fee">{{student.third_term_fee}}</strong> Frw</td>
+                                    {% else %}
+                                      <td id="first" style="background-color: rgb(221, 157, 134); border-radius: 12px;"><strong id="first_term_fee">{{student.third_term_fee}}</strong> Frw</td>
+                                    {% endif %}
+                                  {% endfor %}
+
+
+                                {% elif student.status == 'Day'  %}
+                                    {% for feee in Fixed_Fee_day %}
+
+                                      {% if feee.first_fixed_fee_day == student.first_term_fee %}
+                                        <td id="first" style="background-color: rgb(114, 237, 198); border-radius: 12px;"><strong id="first_term_fee">{{student.first_term_fee}}</strong> Frw</td>
+                                      {% else %}
+                                      <td id="first" style="background-color: rgb(221, 157, 134); border-radius: 12px;"><strong id="first_term_fee">{{student.first_term_fee}}</strong> Frw</td>
+                                      {% endif %}
+                                    {% endfor %}
+                                    
+                                  {% for feee in Fixed_Fee_day %}
+
+                                    {% if feee.second_fixed_fee_day == student.second_term_fee %}
+                                      <td id="first" style="background-color: rgb(114, 237, 198); border-radius: 12px;"><strong id="first_term_fee">{{student.second_term_fee}}</strong> Frw</td>
+                                    {% else %}
+                                      <td id="first" style="background-color: rgb(221, 157, 134); border-radius: 12px;"><strong id="first_term_fee">{{student.second_term_fee}}</strong> Frw</td>
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% for feee in Fixed_Fee_day%}
+
+                                    {% if feee.third_fixed_fee_day == student.third_term_fee %}
+                                      <td id="first" style="background-color: rgb(114, 237, 198); border-radius: 12px;"><strong id="first_term_fee">{{student.third_term_fee}}</strong> Frw</td>
+                                    {% else %}
+                                      <td id="first" style="background-color: rgb(221, 157, 134); border-radius: 12px;"><strong id="first_term_fee">{{student.third_term_fee}}</strong> Frw</td>
+                                    {% endif %}
+                                  {% endfor %}                                  
+                                {% endif %}
+
+                          
+                                <td>
+                                    <button class='btn btn-sm btn-outline-success' href="{% url 'patron_view_cst_l3' student.id %}" data-bs-toggle='modal' data-bs-target='#cst-view-Model{{student.id}}'><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                    <a class='btn btn-sm btn-outline-dark' href="{% url 'burser_edit_rcpo_l3' student.id %}" ><i class="fas fa-pen-fancy"></i></a>
+                                    <button class='btn btn-sm btn-outline-primary' data-bs-toggle='modal' data-bs-target=".cst-delete-Model{{student.id}}">PAY</button>
+                                    {% if student.status == 'Boarding' %}
+                                      <a class='btn btn-sm btn-outline-dark' href="{% url 'financial_payement_verification' student.id %}" >More Info</a>
+                                    {% elif student.status == 'Day' %}
+                                      <a class='btn btn-sm btn-outline-dark' href="{% url 'financial_payement_verification_day' student.id %}" >More Info</a>
+                                    {% endif %}
+                                </td>
+                              </tr>                       
+                            {% endfor %}               
+                          {% endif %}
+        
+                          
+                        </tbody>
+        
+                      </table>
+        
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% block modals %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="cst-upload-Model" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Upload an Excel Table</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="my-input">Add .xsls File</label>
+              <input type="file" class="form-control" name="" id="" placeholder="Upload Excel table ">
+            </div>
+           
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% for student in students %}
+  <div class="modal fade  w-5" id="cst-view-Model{{student.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content w-3">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cstModelLiveLabel">More Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <div class="img">
+                  <img src="{% static 'img/logo1.jpg' %}" style="border-radius: 12%;" width="140px" alt="" srcset="">
+                </div>
+              </div>
+              <div class="col-8">
+                <div class="card">
+                  <div class="card-body">
+                    <form action="" method="post">
+                    <input type="hidden" class="form-control" name="id">
+
+                        <h5 class='card-title'>Student Information</h5>
+                        <strong>First Name : </strong><span>{{student.first_name|upper}}</span> <br>
+                        <strong>Last Name : </strong><span>{{student.last_name|capfirst}}</span><br>
+                        <strong>Gender : </strong><span>{{student.gender|capfirst}}</span><br>
+                        <strong>Trade : </strong><span>{{student.trade|upper}}</span> <br>
+                        <strong>Date of Birth : </strong><span>{{student.dob}}</span> <br>
+                        <strong>Guardian ID : </strong><span>{{student.father_id}}</span> <br>
+                        <strong>Father : </strong><span>{{student.father_names}}</span> <br>
+                        <strong>Mother : </strong><span>{{student.mother_name}}</span> <br>
+                        <strong>Father's Phone : </strong><span>{{student.father_tel}}</span> <br>
+                        <strong>Mother's Phone : </strong><span>{{student.mother_tel}}</span> <br>
+                        <strong>Province : </strong><span>{{student.province}}</span> <br>
+                        <strong>District : </strong><span>{{student.district}}</span> <br>
+                        <strong>Sector : </strong><span>{{student.sector}}</span> <br>
+                    
+                    </form>
+
+                    
+              
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+<!-- <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target=".cst-view-Model">
+  Launch
+</button> -->
+
+
+
+
+{% endblock %}
+{% block Schoolfees %}
+
+{% for student in students %}
+<div class="modal p-5 fade cst-delete-Model{{student.id}}" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+
+          <h5 class="modal-title" id="cstModelLiveLabel">School Fees Payment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="{% url 'burser_Fee_payment_rcpo_l3_students' student.id %}" method="POST">
+            {% csrf_token %}
+            <div class="modal-body">	
+              <div class="row">
+                <div class="col">
+                  <label for="">First Term Fee</label>
+                  <input type="number" class="form-control" name="first_term_fee" placeholder="Enter Fee" value="{{ student.first_term_fee }}">
+                  
+                </div>
+                <div class="col">
+                  <label for="">Second Term Fee</label>
+                  <input type="number" class="form-control" name="second_term_fee" placeholder="Enter Fee" value="{{ student.second_term_fee }}">
+                </div>
+                <div class="col">
+                  <label for="">Third Term Fee</label>
+                  <input type="number" class="form-control" name="third_term_fee" placeholder="Enter Fee" value="{{ student.third_term_fee }}">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              
+                  <button type="button" class="btn btn-default" data-bs-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                  <button type="submit" class="btn btn-primary">Approve Payment</button>
+                
+            </div>
+          </form>
+
+      </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
+
+
+
+<script>
+  function ExportToExcel(type, fn, dl) {
+    var elt = document.getElementById('myTable');
+    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+
+
+    return dl ?
+      XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+      XLSX.writeFile(wb, fn || ('RCPO L3 Students Payment List.' + (type || 'xlsx')));
+ }
+</script>
+
+
+{% endblock %}
+
+
+

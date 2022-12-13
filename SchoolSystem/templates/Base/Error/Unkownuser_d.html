@@ -1,0 +1,28 @@
+{% extends 'base/patron/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col px-5 ">
+                <div class="card bg-danger shadow-lg py-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-light text-center">Warning !!! You are Not allowed to Access This Page!</h5>
+                        <p class="card-text text-light text-center">Login again for Security and Privacy Check</p>
+                        <div class="row">
+                            <div class="col text-center">
+                                <a class="btn btn-outline-warning px-5" href="{% url 'logout' %}">Login</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

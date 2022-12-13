@@ -1,0 +1,253 @@
+{% extends 'base/patron/base.html' %}
+{% load static %}
+
+{% block tabs %}
+    <ul class="nav nav-tabs">
+
+        {% if request.user.email == 'cst@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'cst_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CST</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'cst_l3_teacher' %}">Level 3</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_cst_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_cst' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'rcpol3@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'rcpo_l3_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">RCPO</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'rcpo_l3_teacher' %}">Level 3</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_rcpo_l3_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_rcpo_l3' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'rcpol4@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'rcpo_l4_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">RCPO</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'rcpo_l4_teacher' %}">Level 4</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_rcpo_l4_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_rcpo_l4' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'rcpol5@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'rcpo_l5_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">RCPO</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'rcpo_l5_teacher' %}">Level 5</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_rcpo_l5_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_rcpo_l5' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'lsl3@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'ls_l3_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LS</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'ls_l3_teacher' %}">Level 3</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_ls_l3_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_ls_l3' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'lsl4@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'ls_l4_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LS</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'ls_l4_teacher' %}">Level 4</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_ls_l4_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_ls_l4' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'lsl5@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'ls_l5_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LS</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'ls_l5_teacher' %}">Level 5</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_ls_l5_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_ls_l5' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'elecl3@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'elec_l3_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ELEC</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'elec_l3_teacher' %}">Level 3</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_elec_l3_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_elec_l3' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'elecl4@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'elec_l4_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ELEC</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'elec_l4_teacher' %}">Level 4</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_elec_l4_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_elec_l4' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'elecl5@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'elec_l5_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ELEC</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'elec_l5_teacher' %}">Level 5</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_elec_l5_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_elec_l5' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'sodl4@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'sod_l4_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">SOD</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'sod_l4_teacher' %}">Level 4</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_sod_l4_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_sod_l4' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% elif request.user.email == 'sodl5@gmail.com' %}
+            <li class="nav-item">
+                <a href="{% url 'sod_l5_trainer' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">SOD</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'sod_l5_teacher' %}">Level 5</a>
+
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Day / Boarding</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'day_Scholar_sod_l5_teacher' %}">Day Students</a>
+                    <a class="dropdown-item" href="{% url 'boarding_students_for_sod_l5' %}">Boarding Students</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        {% else %}
+            
+        {% endif %}
+        <li class="nav-item ms-auto">
+            <h6 class="nav-link active text-success">June 12, 2023</h6>
+        </li>
+    </ul>
+{% endblock %}

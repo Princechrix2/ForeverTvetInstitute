@@ -1,0 +1,120 @@
+{% extends 'burser/index.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="card p-1">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="text-center">Student Financial Information</h3>  
+                                <hr> 
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="row container mt-3">
+                            <div class="col-4 p-3 shadow-lg" style="border-radius: 19px; background-color: rgb(100, 227, 225);">
+                                <div class="container">
+                                    <div class="pe-5 ">
+                                        <h4>Student Information</h4>
+                                        <hr>                                        
+                                    </div>
+                                    <div class="info">
+                                        <nm><strong><big>First Name</big> : </strong> {{student.first_name}}</nm>
+                                        <br>
+                                        <nm><strong><big>Last Name</big> : </strong> {{student.last_name}}</nm>
+                                        <br>
+                                        <nm><strong><big>Telephone</big> : </strong> {{student.father_tel}}</nm>
+                                        <br>
+                                        <nm><strong><big>Joining Year</big> : </strong> {{student.start_year}}</nm>
+                                        <br>
+                                        <nm><strong><big>Student Status</big> : </strong>{{student.status}}</nm>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-6 mx-5 shadow-lg p-3" style="border-radius: 19px; background-color: rgb(227, 206, 100);">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Financial Information</h4>
+                                        <hr>  
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Term</th>
+                                                    <th>School Fees</th>
+                                                    <th>Fixed Fee</th>
+                                                    <th>Loan</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>First Term</strong></td>
+                                                    <td id='first_fee'>{{student.first_term_fee}}</td>
+                                                    {% if student.status == "Boarding" %}
+                                                        {% for fix in fixed %}
+                                                            {% if fix %}
+                                                                <td id='first_fix'>{{fix.first_fixed_fee}}</td>
+                                                            {% else %}
+                                                                <td id="first_loan"></td>
+                                                            {% endif %}
+                                                            
+                                                        {% endfor %}
+                                                    {% elif student.status == "Day" %}
+                                                        {% for fiix in fixed_day %}
+                                                            {% if fiix %}
+                                                                <td id='first_fix'>{{fiix.first_fixed_fee_day}}</td>
+                                                            {% else %}
+                                                                <td id="first_loan"></td>
+                                                            {% endif %}
+                                                        
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                    <td id="first_loan"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Second Term</strong></td>
+                                                    <td id='second_fee'>{{student.second_term_fee}}</td>
+                                                    {% for fix in fixed %}
+                                                        {% if fix %}
+                                                            <td id='second_fix'>{{fix.second_fixed_fee}}</td>
+                                                        {% else %}
+                                                            <td ></td>
+                                                        {% endif %}
+                                                        
+                                                    {% endfor %}
+                                                    <td id="second_loan"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Third Term</strong></td>
+                                                    <td id='third_fee'>{{student.third_term_fee}}</td>
+                                                    {% for fix in fixed %}
+                                                        {% if fix %}
+                                                            <td id='third_fix'>{{fix.third_fixed_fee}}</td>
+                                                        {% else %}
+                                                            <td></td>
+                                                        {% endif %}
+                                                        
+                                                    {% endfor %}
+                                                    <td id="third_loan"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

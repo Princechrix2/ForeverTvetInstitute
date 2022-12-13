@@ -1,0 +1,142 @@
+{% extends 'patron/index.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="card p-1">
+                    <div class="card-body">
+                      <div style="align-items: baseline;" class="title d-flex mb-2">
+          
+                        <h5 class="me-2 hm-titlee">Computer System Technology /</h5><span><a href="" class="text-primary hm-title navbar-brand">Level 3</a></span>
+        
+                        <div class="tttle ms-auto">
+                            <h5 class="">Edit Student Info </h5>                
+                            <hr>            
+                        </div>
+
+
+
+                      </div>
+
+                      <div class="section-body">
+                        <div class="container-fluid">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="sub-ttle">Student Personal Info</h6>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">First Name</label>
+                                                <input type="text" class="form-control" name="firstname" id="" aria-describedby="helpId" value="{{student.first_name}}" placeholder="First Name">
+                                                </div>                                                
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Last Name</label>
+                                                <input type="text" class="form-control" name="lastname" id="" aria-describedby="helpId" value="{{student.last_name}}" placeholder="Last Name">
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="">Date of birth</label>
+                                                <input type="date" name="dob" id="input" class="form-control" value="{{student.dob}}"> 
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Senior 3 Code</label>
+                                                <input type="text" class="form-control" name="senior_3_code" id="" aria-describedby="helpId" value="{{student.index_no}}" placeholder="Senior 3 Code or (Index no.)">
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="sub-ttle">Student's Parent Info</h6>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Father's Names</label>
+                                                <input type="text" class="form-control" name="father_names" value="{{student.father_names}}" id="" aria-describedby="helpId" placeholder="Father's Names">
+                                                </div>                                                
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Mother's Names</label>
+                                                <input type="text" class="form-control" name="mother_names" id="" value="{{student.mother_name}}" aria-describedby="helpId" placeholder="Mother's Names">
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="">Father's National ID</label>
+                                                    <input type="number" class="form-control" name="father_id" value="{{student.father_id}}" id="" aria-describedby="helpId" placeholder="National ID">
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Father's Telphone</label>
+                                                <input type="text" class="form-control" name="father_tel" value="{{student.father_tel}}" id="" aria-describedby="helpId" placeholder="Telephone number">
+                                                </div>                                                
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Mother's Telphone</label>
+                                                <input type="text" class="form-control" name="mother_tel" value="{{student.mother_tel}}" id="" aria-describedby="helpId" placeholder="Telephone number">
+                                                </div>                                                
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="sub-ttle">Student's Location Info</h6>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Province :</label>
+                                                <input type="text" class="form-control" name="province" value="{{student.province}}" id="" aria-describedby="helpId" placeholder="Province">
+                                                </div>                                                
+                                                <div class="form-group">
+                                                <label for="">District :</label>
+                                                <input type="text" class="form-control" name="district" value="{{student.district}}" id="" aria-describedby="helpId" placeholder="District">
+                                                </div>                                                
+                                                <div class="form-group">
+                                                <label for="">Sector :</label>
+                                                <input type="text" class="form-control" name="sector" value="{{student.sector}}" id="" aria-describedby="helpId" placeholder="Sector">
+                                                </div>                                                
+                                                <div class="form-group">
+                                                <label for="">Village :</label>
+                                                <input type="text" class="form-control" name="village" value="{{student.village}}" id="" aria-describedby="helpId" placeholder="Village">
+                                                </div>                                                
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit"  class="btn btn-outline-success">Save Changes</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                      </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

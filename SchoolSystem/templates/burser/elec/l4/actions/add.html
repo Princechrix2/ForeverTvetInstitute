@@ -1,0 +1,196 @@
+{% extends 'burser/index.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="card p-1">
+                    <div class="card-body">
+                      <div style="align-items: baseline;" class="title d-flex mb-2">
+          
+                        <h5 class="me-2 hm-titlee">Forever Tvet Institute /</h5><span><a href="" class="text-primary hm-title navbar-brand">GASABO, Jabana</a></span>
+        
+                        <div class="tttle ms-auto">
+                            <h5 class="">Register a Student</h5>                
+                            <hr>            
+                        </div>
+
+
+
+                      </div>
+
+                      <div class="section-body">
+                        <div class="container-fluid">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="sub-ttle">Student Personal Info</h6>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">First Name</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="firstname" id="" aria-describedby="helpId" placeholder="First Name">
+                                                </div>                                                
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Last Name</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="lastname" id="" aria-describedby="helpId" placeholder="Last Name">
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="">Date of birth</label>
+                                                <input type="date" name="dob" id="input" class="form-control" value="" required="required" title=""> 
+                                            </div>
+                                            <div class="col">
+                                                <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
+                                                    <label class="btn">Gender</label>
+                                                    
+                                                    <select name="gender" id="input" class="form-control" required="required">
+                                                        <option value="M">Male</option>
+                                                        <option value="F">Female</option>
+                                                    </select>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                  <label for="">Trade</label>
+                                                  <select class="form-control" name="trade" id="">
+                                                    {% for trade in trades %}
+                                                        <option value="{{trade.trade}}">{{ trade.trade }}</option>
+                                                    {% empty %}
+                                                        <option>No Trade</option>
+                                                    {% endfor %}
+
+                                                  </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label for="">Level</label>
+                                                <select name="level" id="input" class="form-control">
+                                                    <option value="L3">Level 3</option>
+                                                    <option value="L4">Level 4</option>
+                                                    <option value="L5">Level 5</option>
+                                                </select>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Senior 3 Code</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="senior_3_code" id="" aria-describedby="helpId" placeholder="Senior 3 Code or (Index no.)">
+                                                </div>                                                
+                                            </div>
+                                            <div class="col">
+                                                <label for="">Student Status</label>
+                                                <select name="status" id="input" class="form-control">
+                                                    <option value="Boarding">Boarding Scholar</option>
+                                                    <option value="Day">Day Scholar</option>
+                                                </select>
+                                                
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="sub-ttle">Student's Parent Info</h6>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Father's Names</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="father_names" id="" aria-describedby="helpId" placeholder="Father's Names">
+                                                </div>                                                
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Mother's Names</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="mother_names" id="" aria-describedby="helpId" placeholder="Mother's Names">
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="">Father's National ID</label>
+                                                    <input type="number" autocomplete="off" class="form-control" name="father_id" id="" aria-describedby="helpId" placeholder="National ID">
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Father's Telphone</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="father_tel" id="" aria-describedby="helpId" placeholder="Telephone number">
+                                                </div>                                                
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Mother's Telphone</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="mother_tel" id="" aria-describedby="helpId" placeholder="Telephone number">
+                                                </div>                                                
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="sub-ttle">Student's Location Info</h6>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                <label for="">Province :</label>
+                                                <select name="province" id="input" class="form-control">
+                                                    <option value="North">Northern</option>
+                                                    <option value="Kigali">Kigali</option>
+                                                    <option value="South">Southern</option>
+                                                    <option value="East">Eastern</option>
+                                                </select>
+                                                
+                                                </div>                                                
+                                                <div class="form-group">
+                                                <label for="">District :</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="district" id="" aria-describedby="helpId" placeholder="District">
+                                                </div>                                                
+                                                <div class="form-group">
+                                                <label for="">Sector :</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="sector" id="" aria-describedby="helpId" placeholder="Sector">
+                                                </div>                                                
+                                                <div class="form-group">
+                                                <label for="">Village :</label>
+                                                <input type="text" autocomplete="off" class="form-control" name="village" id="" aria-describedby="helpId" placeholder="Village">
+                                                </div>                                                
+                                            </div>
+                                            <div class="form-group" style="display: none;">
+                                                <input type="text" class="form-control" name="start_year" value="{{year}}">
+                                                <input type="text" class="form-control" name="graduated" value="False">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <button type="submit"  class="btn btn-outline-success">Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                      </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

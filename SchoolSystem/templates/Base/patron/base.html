@@ -1,0 +1,251 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Ishinwe Prince Christian">
+
+    <title>Forever Tvet Institute || System</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" > 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'datatable/datatable.bootstrap.min.css' %}">
+    <script src="{% static 'js/xlsx.full.min.js' %}"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  </head>
+  <body>
+    {% block navbar %}
+    <nav class="navbar nvbr navbar-expand-sm bg-dark">
+        <div class="container-fluid">
+            <div class="Logo">
+                <div class="row">
+                    <div class="col">
+                        <img src="{% static 'img/Logo1.jpg' %}" style="border-radius: 50%;" width="46px" alt="">
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            <a class="navbar-brand nvbr-logo" href="#">Forever Tvet Institute</a>
+            <button class="navbar-toggler navbar-toggler-icon d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                    {% if request.user.email == 'patron@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, Patron & Metron </span>
+                        </li>
+                    {% elif request.user.email == 'dos@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, Director Of Studies </span>
+                        </li>
+                    {% elif request.user.email == 'burser@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, School Accountant</span>
+                    {% elif request.user.email == 'cst@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, CST Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'rcpol3@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, RCPO L3 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'rcpol4@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, RCPO L4 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'rcpol5@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, RCPO L5 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'lsl3@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, LS L3 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'lsl4@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, LS L4 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'lsl5@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, LS L5 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'elecl3@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, ELEC L3 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'elecl4@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, ELEC L4 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'elecl5@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, ELEC L5 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'sodl4@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, SOD L4 Class Teacher</span>
+                        </li>
+                    {% elif request.user.email == 'sodl5@gmail.com' %}
+                        <li class="nav-item active">
+                            <span class="nav-link">Welcome, SOD L5 Class Teacher</span>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+                </ul>
+            </div>        
+        </div>
+    
+    </nav>
+    {% endblock %}
+
+    {% block tabs %}
+    {% endblock %}
+
+    {% block content %}
+        <div class="container-fluid mt-3">
+            <div class="row">
+                <div class="col">
+                    {% if request.user.email == 'patron@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Patron & Metron, You can now Register new Students in the School System,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                    {% elif request.user.email == 'dos@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Director of Studies, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'burser@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Accountant, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'cst@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'rcpol3@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'rcpol4@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'rcpol5@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'lsl3@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'lsl4@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'lsl5@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'elecl3@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'elecl4@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'elecl5@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'sodl4@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif request.user.email == 'sodl5@gmail.com' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Welcome Class Teacher, You can access the Student's information,
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="h-100 p-5 text-white bg-dark rounded-3 shadow">
+                        <div class="hm d-flex">
+                            <h1 class="hm-title">Forever Tvet Institute</h1>
+                        </div>
+                        <div class="row d-sm-flex d-none">
+                            <div class="col-2">
+                                <h4 class="gndr-hm">Boys : <span class="text-info ttle" >{{Boys}}</span></h4>
+                            </div>
+                            <div class="col-2">
+                                <h4 class="gndr-hm">Girls : <span class="text-info ttle" >{{Girls}}</span></h4>
+                            </div>
+                        </div>
+                        <h4>Total : <span class="text-info ttle" >{{All_total}} students</span></h4>
+                        <p class="gndr-hm">Available course Trades: Computer Systems Technology, Software Development, Land Surveying, Road Construction & Plant Operation, <br> Electricity. In Partnership with China.</p>
+                        <button class="btn btn-outline-info gndr-hm" type="button">All Students</button>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    {% endblock %}
+
+
+    <blockquote class="blockquote text-center fixed-bottom">
+        <footer class="blockquote-footer">Prince Chrix</footer>
+    </blockquote>
+
+
+    
+
+    <script src="{% static 'js/burser.js' %}"></script>
+    <script src="{% static 'js/financial_Calci.js' %}"></script>
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/all.min.js' %}"></script>
+    <script src="{% static 'datatable/jquery.dataTables.min.js' %}"></script>    
+    <script src="{% static 'datatable/dataTable.bootstrap.min.js' %}"></script>    
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>    
+    <script src="{% static 'js/popper.min.js' %}"></script>
+
+    <script>
+      
+        $(document).ready(function(){
+          //inialize datatable
+          $('#myTable').DataTable();
+    
+            //hide alert
+          $(document).on('click', '.close', function(){
+            $('.alert').hide();
+          })
+        });
+    </script>
+
+    
+  </body>
+</html>

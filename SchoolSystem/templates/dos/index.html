@@ -1,0 +1,64 @@
+{% extends 'base/patron/base.html' %}
+{% load static %}
+
+{% block tabs %}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="{% url 'dos' %}" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'all_d' %}" class="nav-link">All Students</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CST</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'dos_cst_l3' %}">Level 3</a>
+                <div class="dropdown-divider"></div>
+            </div>
+        </li>
+        <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">RCPO</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'dos_rcpo_l3' %}">Level 3</a>
+                <a class="dropdown-item" href="{% url 'dos_rcpo_l4' %}">Level 4</a>
+                <a class="dropdown-item" href="{% url 'dos_rcpo_l5' %}">Level 5</a>
+                <div class="dropdown-divider"></div>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LS</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'dos_ls_l3' %}">Level 3</a>
+                <a class="dropdown-item" href="{% url 'dos_ls_l4' %}">Level 4</a>
+                <a class="dropdown-item" href="{% url 'dos_ls_l5' %}">Level 5</a>
+                <div class="dropdown-divider"></div>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ELEC</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'dos_elec_l3' %}">Level 3</a>
+                <a class="dropdown-item" href="{% url 'dos_elec_l4' %}">Level 4</a>
+                <a class="dropdown-item" href="{% url 'dos_elec_l5' %}">Level 5</a>
+                <div class="dropdown-divider"></div>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">SOD</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'dos_sod_l4' %}">Level 4</a>
+                <a class="dropdown-item" href="{% url 'dos_sod_l5' %}">Level 5</a>
+                <div class="dropdown-divider"></div>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'graduates_d' %}" class="nav-link">Graduates</a>
+        </li>
+        <li class="nav-item ms-auto">
+            <h6 class="nav-link active text-success">June 12, 2023</h6>
+        </li>
+    </ul>
+{% endblock %}
+
+
